@@ -3,23 +3,24 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 
 const connectDB = require('./mongodb/connect.js');
-const {login, Signup} = require("./controllers/Auth");
 dotenv.config();
-
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/api/v1/login",login);
-app.post("/api/v1/signup",Signup);
+
+const authRoutes = require('./routes/authRoute.js')
+app.use('/api/v1',authRoutes)
+
+
+
+
 
 app.get('/', async (req, res) => {
   res.status(200).json({
     message: 'Hello from Server!',
   });
 });
-
-
 
 const startServer = async () => {
   try {
