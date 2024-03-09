@@ -12,7 +12,8 @@ app.use(express.json());
 const authRoutes = require('./routes/authRoute.js')
 app.use('/api/v1',authRoutes)
 
-
+const courseRoute = require('./routes/courseRoute.js');
+app.use('/api/v1',courseRoute)
 
 
 
