@@ -3,11 +3,12 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 
 const connectDB = require('./mongodb/connect.js');
-
 dotenv.config();
 
 const app = express();
 app.use(cors());
+
+
 
 app.get('/', async (req, res) => {
   res.status(200).json({
