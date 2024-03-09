@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 
-const userModel=new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     firstName:{
         type:String,
         required:true,
@@ -21,12 +21,10 @@ const userModel=new mongoose.Schema({
     accountType:{
      type:String,
      required:true,
-     enum:["Student","Instructor"]
-    },
-    courses:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Course"
-    }],
+     enum:["Student","Instructor"],
+     default: "Student"
+    }
 })
 
-module.exports=mongoose.model("User",userModel);
+const user = mongoose.model("User",userSchema);
+module.exports = user;
